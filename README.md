@@ -4,7 +4,7 @@ RG-Select for GNN reproducibility assessment with datasets of multigraphs coded 
 This repository provides the official PyTorch implementation of the following paper:
 
 <p align="center">
-  <img src="./fig1.png">
+  <img src="fig1.png">
 </p>
 
 
