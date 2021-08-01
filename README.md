@@ -102,8 +102,6 @@ To be uploaded soon.
 # RG-Select on arXiv
 To be uploaded soon.
 
-# Acknowledgement
-This work was funded by generous grants from the European H2020 Marie Sklodowska-Curie action (grant no. 101003403, \url{http://basira-lab.com/normnets/}) to I.R. and the Scientific and Technological Research Council of Turkey to I.R. under the TUBITAK 2232 Fellowship for Outstanding Researchers (no. 118C288, \url{http://basira-lab.com/reprime/}). However, all scientific contributions made in this project are owned and approved solely by the authors. M.A.G. is supported by TUBITAK.
 
 # License
 Our code is released under MIT License (see LICENSE file for details).
