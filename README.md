@@ -55,7 +55,7 @@ These parameters will generate the dataset of graphs. These graphs are represent
 
 # GNN models
 The GNN models included are:
-* DiffPool: \url{https://arxiv.org/abs/1806.08804}
+* DiffPool: https://arxiv.org/abs/1806.08804
 * SAGPool: \url{http://proceedings.mlr.press/v97/lee19c.html}
 * GAT: \url{https://arxiv.org/abs/1710.10903}
 * g-U-Nets: \url{http://proceedings.mlr.press/v97/gao19a.html}
