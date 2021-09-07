@@ -105,7 +105,8 @@ To be uploaded soon.
 ```
 
 # RG-Select on arXiv
-To be uploaded soon.
+
+https://arxiv.org/abs/2109.02248
 
 
 # License
