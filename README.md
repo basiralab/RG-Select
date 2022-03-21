@@ -10,7 +10,7 @@ This repository provides the official PyTorch implementation of the following pa
 
 > **Investigating Reproducibility in Graph NeuralNetworks using Multigraph Data**
 
-> Ahmed Nebli, [Mohammed Amine Gharsallaoui](https://github.com/aminegha)<sup>1</sup>, Zeynep Gurler<sup>1</sup>, [Islem Rekik](https://basira-lab.com/)<sup>1,2</sup>
+> Ahmed Nebli<sup>1</sup>, [Mohammed Amine Gharsallaoui](https://github.com/aminegha)<sup>1</sup>, Zeynep Gurler<sup>1</sup>, [Islem Rekik](https://basira-lab.com/)<sup>1,2</sup>
 
 
 > <sup>1</sup>BASIRA Lab, Faculty of Computer and Informatics, Istanbul Technical University, Istanbul, Turkey
