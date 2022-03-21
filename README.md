@@ -10,7 +10,7 @@ This repository provides the official PyTorch implementation of the following pa
 
 > **Investigating Reproducibility in Graph NeuralNetworks using Multigraph Data**
 
-> [Mohammed Amine Gharsallaoui](https://github.com/aminegha)<sup>1</sup>, [Islem Rekik](https://basira-lab.com/)<sup>1,2</sup>
+> [Ahmed Nebli], [Mohammed Amine Gharsallaoui](https://github.com/aminegha)<sup>1</sup>, [Zeynep Gurler]<sup>1</sup>, [Islem Rekik](https://basira-lab.com/)<sup>1,2</sup>
 
 
 > <sup>1</sup>BASIRA Lab, Faculty of Computer and Informatics, Istanbul Technical University, Istanbul, Turkey
@@ -101,7 +101,15 @@ Georges, N., Mhiri, I., Rekik, I., & Alzheimer’s Disease Neuroimaging Initiati
 If our code is useful for your work please cite our paper:
 
 ```latex
-To be uploaded soon.
+@article{nebli2022quantifying,
+  title={Quantifying the reproducibility of graph neural networks using multigraph data representation},
+  author={Nebli, Ahmed and Gharsallaoui, Mohammed Amine and G{\"u}rler, Zeynep and Rekik, Islem and Alzheimer’s Disease Neuroimaging Initiative and others},
+  journal={Neural Networks},
+  volume={148},
+  pages={254--265},
+  year={2022},
+  publisher={Elsevier}
+}
 ```
 
 # RG-Select on arXiv
