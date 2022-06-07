@@ -99,7 +99,8 @@ def few_shot_splits(dataset):
         for i in range(len(labels)):
             G_element = {"adj": multigraphs[i],"label": labels[i],"id":  i,}
             G_list.append(G_element)
-        
+
+        np.random.shuffle(G_list)
         size_label0=0
         size_label1=0
         for i in range(len(G_list)):
@@ -194,13 +195,13 @@ def few_shot_transformer(dataset):
                 adj = torch.from_numpy(list_train[i]['adj'])
                 edge_index, edge_values = utils.dense_to_sparse(adj)
                 x = torch.eye(adj.shape[0])
-                data_train_elt = Data(x=x, edge_index=edge_index, edge_attr=edge_values, adj=adj, y=torch.tensor(list_train[i]['label']))
+                data_train_elt = Data(x=x, edge_index=edge_index, edge_attr=edge_values, adj=adj, y=torch.tensor([list_train[i]['label']]))
                 train_list_pg.append(data_train_elt)
             for j in range(len(list_test)):
                 adj = torch.from_numpy(list_test[j]['adj'])
                 edge_index, edge_values = utils.dense_to_sparse(adj)
                 x = torch.eye(adj.shape[0])
-                data_test_elt = Data(x=x, edge_index=edge_index, edge_attr=edge_values, adj=adj, y=torch.tensor(list_test[j]['label']))
+                data_test_elt = Data(x=x, edge_index=edge_index, edge_attr=edge_values, adj=adj, y=torch.tensor([list_test[j]['label']]))
                 test_list_pg.append(data_test_elt)
             
             with open('Two_shot_processed/'+dataset+'_view_'+str(v)+'_shot_'+str(shot_n)+'_train_pg','wb') as f:

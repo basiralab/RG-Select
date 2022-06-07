@@ -39,15 +39,15 @@ def arg_parser(num_shots=2):
                         help='learning rate')
     parser.add_argument('--weight_decay', type=float, default=0.0001, #0.0001
                         help='weight decay')
-    parser.add_argument('--nhid', type=int, default=256, 
+    parser.add_argument('--nhid', type=int, default=256,
                         help='hidden size')
     parser.add_argument('--pooling_ratio', type=float, default=0.5,
                         help='pooling ratio')
-    parser.add_argument('--dropout_ratio', type=float, default=0.4,
+    parser.add_argument('--dropout_ratio', type=float, default=0.4, #0.4
                         help='dropout ratio')
     parser.add_argument('--dataset', type=str, default='DD',
                         help='DD/PROTEINS/NCI1/NCI109/Mutagenicity')
-    parser.add_argument('--epochs', type=int, default=1,  #7
+    parser.add_argument('--epochs', type=int, default=6,  #7
                         help='maximum number of epochs')
     parser.add_argument('--num_shots', type=int, default=num_shots,  #100
                         help='nbr of shots')
@@ -65,24 +65,25 @@ def test(model,loader, is_trained, model_name):
     torch.manual_seed(args.seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed(args.seed)
-    model.eval()
-    correct = 0.
-    loss = 0.
-    preds = []
-    labels =[]
-    for data in loader:
-        data = data.to(device)
-        out = model(data)
-        pred = out.max(dim=1)[1]
-        correct += pred.eq(data.y).sum().item()
-        loss += F.nll_loss(out,data.y,reduction='sum').item()
-        preds.append(pred)
-        labels.append(data.y)
-    if is_trained:
-        simple_r = {'acc': (correct / len(loader.dataset))}
+    #model.eval()
+    with torch.no_grad():
+        correct = 0.
+        loss = 0.
+        preds = []
+        labels =[]
+        for data in loader:
+            data = data.to(device)
+            out = model(data)
+            pred = out.max(dim=1)[1]
+            correct += pred.eq(data.y).sum().item()
+            loss += F.nll_loss(out,data.y,reduction='sum').item()
+            preds.append(pred)
+            labels.append(data.y)
+        if is_trained:
+            simple_r = {'acc': (correct / len(loader.dataset))}
 
-        with open("./sag/Labels_and_preds/"+model_name+".pickle", 'wb') as f:
-          pickle.dump(simple_r, f)
+            with open("./sag/Labels_and_preds/"+model_name+".pickle", 'wb') as f:
+              pickle.dump(simple_r, f)
         
     return correct / len(loader.dataset),loss / len(loader.dataset)
 
@@ -110,7 +111,7 @@ def cv_benchmark(dataset, view, cv_number):
     
         print("Size of training set:"+str(len(train_set)))
         print("Size of test set:"+str(len(test_set)))
-        print("CV : ",cv_n)
+        print("CV : ", cv_n)
         model = Net(args).to('cpu')
         optimizer = torch.optim.Adam(model.parameters(), lr=args.lr, weight_decay=args.weight_decay)
     
@@ -158,7 +159,7 @@ def cv_benchmark(dataset, view, cv_number):
             os.remove(path)
         
         os.rename('SAG_W.pickle', path)
-        torch.save(model, "./sag/models/SAG_"+cv_name+".pt")
+        torch.save(model.state_dict(), "./sag/models/SAG_"+cv_name+".pt")
         test_acc,test_loss = test(model,test_loader, 1, cv_name)
         print("Test accuarcy:{}".format(test_acc))
 
@@ -204,6 +205,7 @@ def two_shot_trainer(dataset, view, num_shots):
                 out = model(data)
                 tensor_preds[i] = out      # added  
                 tensor_labels[i] = data.y  # added
+                pred = out.max(dim=1)[1]
                 loss = F.nll_loss(out, data.y)
                 total_loss += loss
                 loss.backward()

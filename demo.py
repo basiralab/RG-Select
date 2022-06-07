@@ -101,15 +101,15 @@ if __name__ == '__main__':
         '''
         Training GNN Models with datasets of data directory.
         '''
-        datasets_asdnc = ['Demo']
-        #datasets_asdnc = ['RH_ASDNC','LH_ASDNC']
+        #datasets_asdnc = ['Demo']
+        datasets_asdnc = ['RH_ASDNC','LH_ASDNC']
         #datasets_adlmci = ['RH_ADLMCI','LH_ADLMCI']
         
         
         views = [0, 1, 2, 3]
         for dataset_i in datasets_asdnc:
             for view_i in views:
-                models = ["diffpool", "gcn", "gat", "gunet", "sag"]
+                models = ["sag"]
                 #models = ["gunet"]
                 for model in models:
                     two_shot_train(dataset_i, model, view_i, num_shots)

@@ -136,13 +136,13 @@ def transform(n_fold, dataset):
                 adj = torch.from_numpy(list_train[i]['adj'])
                 edge_index, edge_values = utils.dense_to_sparse(adj)
                 x = torch.eye(adj.shape[0])
-                data_train_elt = Data(x=x, edge_index=edge_index, edge_attr=edge_values, adj=adj, y=torch.tensor(list_train[i]['label']))
+                data_train_elt = Data(x=x, edge_index=edge_index, edge_attr=edge_values, adj=adj, y=torch.tensor([list_train[i]['label']]))
                 train_list_pg.append(data_train_elt)
             for j in range(len(list_test)):
                 adj = torch.from_numpy(list_test[j]['adj'])
                 edge_index, edge_values = utils.dense_to_sparse(adj)
                 x = torch.eye(adj.shape[0])
-                data_test_elt = Data(x=x, edge_index=edge_index, edge_attr=edge_values, adj=adj, y=torch.tensor(list_test[j]['label']))
+                data_test_elt = Data(x=x, edge_index=edge_index, edge_attr=edge_values, adj=adj, y=torch.tensor([list_test[j]['label']]))
                 test_list_pg.append(data_test_elt)
             
             with open('Folds_processed'+str(n_fold)+'/'+dataset+'_view_'+str(v) +'_folds_'+ str(n_fold) + '_fold_'+str(cv)+'_train_pg','wb') as f:
